@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Gloss
 
 class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate {
     
@@ -17,7 +16,11 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     
     var beacons: [CLBeacon] = Array()
     
-    var beaconNames: [String] = Array()
+    var beaconInfo: [String: BeaconInfo] = Dictionary()
+    
+    var beaconInfoByTableOrder: [BeaconInfo] = Array()
+    
+    var beaconInfoHasBeenLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,9 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         self.beaconManager.delegate = self
         
         self.beaconManager.requestWhenInUseAuthorization()
+        
+        getBeaconInfoFromWeb()
+        beaconInfoHasBeenLoaded = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,62 +51,54 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    let namesByBeacons = [
-        "1000:456":  "Light Blue",
-        "123:789":   "Light Green",
-        "786:50787": "Purple"
-    ]
-    
-    func nameOfBeacon(beacon: CLBeacon) -> String? {
-        let beaconKey = "\(beacon.major):\(beacon.minor)"
-        
-        let url = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/beacons.json")!
-        NSURLSession.sharedSession().dataTaskWithURL(url) { json, response, error in
-            let error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+       
+    func getBeaconInfoFromWeb() {
+        DataManager.getBeaconInfoFromWebWithSuccess() { (jsonData) -> Void in
             
-            if (json != nil) {
-                
-                struct BeaconInfo: Decodable {
-                    
-                    let title: String?
-                    let subtitle: String?
-                    let description: String?
-                    let image: String?
-                    
-                    init?(json: JSON) {
-                        self.title = "title" <~~ json
-                        self.subtitle = "subtitle" <~~ json
-                        self.description = "description" <~~ json
-                        self.image = "image" <~~ json
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments)
+                if let data = json["data"] as? [String: [String: AnyObject]] {
+                    if let allBeacons = data["beacons"] as? [String: [String: String]] {
+                        var beaconInfo: [String: BeaconInfo] = Dictionary()
+                        for beacon in allBeacons {
+                            let beaconKey = beacon.0
+                            let beaconInfoDict = beacon.1
+                            let title = beaconInfoDict["title"]
+                            let subtitle = beaconInfoDict["subtitle"]
+                            let description = beaconInfoDict["description"]
+                            let image = beaconInfoDict["image"]
+                            let beaconInfoObj = BeaconInfo(title: title, subtitle: subtitle, description: description, image: image)
+                            beaconInfo[beaconKey] = beaconInfoObj
+                        }
+                        self.beaconInfo = beaconInfo
                     }
-                
+                } else {
+                    print("Error serializing JSON data")
                 }
-            } else {
+            } catch {
                 print(error)
             }
-        }.resume()
-        
-        if let name = self.namesByBeacons[beaconKey] {
-            return name
         }
-        
-        return nil
+    }
+    
+    func getBeaconInfoFromBeacon(beacon: CLBeacon) -> BeaconInfo {
+        let beaconKey = "\(beacon.major):\(beacon.minor)"
+        let beaconInfoObj = beaconInfo[beaconKey]!
+        return beaconInfoObj
     }
     
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         self.beacons = beacons
         
-        var names: [String] = Array()
+        var beaconInfoByTableOrder: [BeaconInfo] = Array()
         
-        for beacon in beacons {
-            if let name = nameOfBeacon(beacon) as String! {
-                names.append(name)
+        if beaconInfoHasBeenLoaded {
+            for beacon in beacons {
+                let beaconInfoObj = getBeaconInfoFromBeacon(beacon)
+                beaconInfoByTableOrder.append(beaconInfoObj)
             }
         }
-        
-        self.beaconNames = names
-        
+        self.beaconInfoByTableOrder = beaconInfoByTableOrder
         self.tableView.reloadData()
     }
     
@@ -109,17 +107,17 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beaconNames.count
+        return beaconInfoByTableOrder.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         
-        cell.textLabel?.text = beaconNames[indexPath.row]
+        cell.textLabel?.text = beaconInfoByTableOrder[indexPath.row].title
         cell.textLabel?.contentScaleFactor
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
-        cell.detailTextLabel?.text = "Lorem ipsum blah blah blah"
+        cell.detailTextLabel?.text = beaconInfoByTableOrder[indexPath.row].subtitle
         cell.detailTextLabel?.minimumScaleFactor = 0
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
         
@@ -134,7 +132,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
             let selectedRow = tableView.indexPathForSelectedRow?.row
             
             if let dest = segue.destinationViewController as? BeaconViewController {
-                dest.beaconID = beaconNames[selectedRow!]
+                dest.beaconTitle = beaconInfoByTableOrder[selectedRow!].title
             }
         }
     }

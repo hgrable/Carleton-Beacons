@@ -8,7 +8,7 @@
         <!--Beacons in Range Table-->
         <scene sceneID="ENZ-He-zdp">
             <objects>
-                <tableViewController id="EHK-2g-6oH" userLabel="Beacons in Range Table" customClass="BeaconTableViewController" customModule="CarletonBeacons" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EHK-2g-6oH" userLabel="Beacons in Range Table" customClass="BeaconTableViewController" customModule="Carleton_Beacons" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Was-rK-wLn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
         <!--Beacon View Controller-->
         <scene sceneID="kyu-Wb-kfq">
             <objects>
-                <viewController id="J4y-K1-glA" customClass="BeaconViewController" customModule="CarletonBeacons" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J4y-K1-glA" customClass="BeaconViewController" customModule="Carleton_Beacons" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gcK-tw-gCI"/>
                         <viewControllerLayoutGuide type="bottom" id="bBJ-Fp-VWw"/>

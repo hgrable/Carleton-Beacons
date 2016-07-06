@@ -16,6 +16,8 @@
 		31E996B61D2D6A1800E488D8 /* BeaconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */; };
 		31E996B71D2D6A1800E488D8 /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */; };
 		31E996B91D2D6A1800E488D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996B01D2D6A1800E488D8 /* ViewController.swift */; };
+		31E996BB1D2D84B300E488D8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996BA1D2D84B300E488D8 /* DataManager.swift */; };
+		31E996BD1D2DB50400E488D8 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996BC1D2DB50400E488D8 /* BeaconInfo.swift */; };
 		31F4665C1D2D671D00BEE00A /* Carleton_BeaconsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */; };
 		31F466671D2D671E00BEE00A /* Carleton_BeaconsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F466661D2D671E00BEE00A /* Carleton_BeaconsUITests.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		31E996AE1D2D6A1800E488D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E996AF1D2D6A1800E488D8 /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		31E996B01D2D6A1800E488D8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31E996BA1D2D84B300E488D8 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		31E996BC1D2DB50400E488D8 /* BeaconInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconInfo.swift; sourceTree = "<group>"; };
 		31F466431D2D671D00BEE00A /* Carleton-Beacons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carleton-Beacons.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F466571D2D671D00BEE00A /* Carleton-BeaconsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carleton-BeaconsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carleton_BeaconsTests.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				31E996B01D2D6A1800E488D8 /* ViewController.swift */,
 				31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */,
 				31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */,
+				31E996BA1D2D84B300E488D8 /* DataManager.swift */,
+				31E996BC1D2DB50400E488D8 /* BeaconInfo.swift */,
 				31E996A91D2D6A1800E488D8 /* Main.storyboard */,
 				31E996A71D2D6A1800E488D8 /* LaunchScreen.storyboard */,
 				31E996A51D2D6A1800E488D8 /* Assets.xcassets */,
@@ -347,9 +353,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				31E996B11D2D6A1800E488D8 /* AppDelegate.swift in Sources */,
+				31E996BB1D2D84B300E488D8 /* DataManager.swift in Sources */,
 				31E996B71D2D6A1800E488D8 /* BeaconViewController.swift in Sources */,
 				31E996B91D2D6A1800E488D8 /* ViewController.swift in Sources */,
 				31E996B61D2D6A1800E488D8 /* BeaconTableViewController.swift in Sources */,
+				31E996BD1D2DB50400E488D8 /* BeaconInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

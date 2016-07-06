@@ -10,15 +10,17 @@ import UIKit
 
 class BeaconViewController: UIViewController {
     
-    var beaconID: String = String()
+    var beaconTitle: String = String()
     
     //@IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backItem?.title = "Back"
-        self.title = beaconID
-        //titleLabel.text = beaconID
+        
+        // Change back button text to "Back"
+        self.navigationController?.navigationBar.topItem?.title = "Back"
+        
+        self.title = beaconTitle
     }
     
     override func didReceiveMemoryWarning() {
