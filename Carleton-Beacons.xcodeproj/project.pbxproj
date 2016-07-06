@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31F466471D2D671D00BEE00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F466461D2D671D00BEE00A /* AppDelegate.swift */; };
+		31F466491D2D671D00BEE00A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F466481D2D671D00BEE00A /* ViewController.swift */; };
+		31F4664C1D2D671D00BEE00A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F4664A1D2D671D00BEE00A /* Main.storyboard */; };
+		31F4664E1D2D671D00BEE00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F4664D1D2D671D00BEE00A /* Assets.xcassets */; };
+		31F466511D2D671D00BEE00A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F4664F1D2D671D00BEE00A /* LaunchScreen.storyboard */; };
+		31F4665C1D2D671D00BEE00A /* Carleton_BeaconsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */; };
+		31F466671D2D671E00BEE00A /* Carleton_BeaconsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F466661D2D671E00BEE00A /* Carleton_BeaconsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31F466581D2D671D00BEE00A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31F4663B1D2D671D00BEE00A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31F466421D2D671D00BEE00A;
+			remoteInfo = "Carleton-Beacons";
+		};
+		31F466631D2D671E00BEE00A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31F4663B1D2D671D00BEE00A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31F466421D2D671D00BEE00A;
+			remoteInfo = "Carleton-Beacons";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		31F466431D2D671D00BEE00A /* Carleton-Beacons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carleton-Beacons.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31F466461D2D671D00BEE00A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		31F466481D2D671D00BEE00A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31F4664B1D2D671D00BEE00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		31F4664D1D2D671D00BEE00A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31F466501D2D671D00BEE00A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		31F466521D2D671D00BEE00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F466571D2D671D00BEE00A /* Carleton-BeaconsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carleton-BeaconsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carleton_BeaconsTests.swift; sourceTree = "<group>"; };
+		31F4665D1D2D671E00BEE00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F466621D2D671E00BEE00A /* Carleton-BeaconsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carleton-BeaconsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31F466661D2D671E00BEE00A /* Carleton_BeaconsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carleton_BeaconsUITests.swift; sourceTree = "<group>"; };
+		31F466681D2D671E00BEE00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31F466401D2D671D00BEE00A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F466541D2D671D00BEE00A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F4665F1D2D671E00BEE00A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31F4663A1D2D671D00BEE00A = {
+			isa = PBXGroup;
+			children = (
+				31F466451D2D671D00BEE00A /* Carleton-Beacons */,
+				31F4665A1D2D671D00BEE00A /* Carleton-BeaconsTests */,
+				31F466651D2D671E00BEE00A /* Carleton-BeaconsUITests */,
+				31F466441D2D671D00BEE00A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31F466441D2D671D00BEE00A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31F466431D2D671D00BEE00A /* Carleton-Beacons.app */,
+				31F466571D2D671D00BEE00A /* Carleton-BeaconsTests.xctest */,
+				31F466621D2D671E00BEE00A /* Carleton-BeaconsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31F466451D2D671D00BEE00A /* Carleton-Beacons */ = {
+			isa = PBXGroup;
+			children = (
+				31F466461D2D671D00BEE00A /* AppDelegate.swift */,
+				31F466481D2D671D00BEE00A /* ViewController.swift */,
+				31F4664A1D2D671D00BEE00A /* Main.storyboard */,
+				31F4664D1D2D671D00BEE00A /* Assets.xcassets */,
+				31F4664F1D2D671D00BEE00A /* LaunchScreen.storyboard */,
+				31F466521D2D671D00BEE00A /* Info.plist */,
+			);
+			path = "Carleton-Beacons";
+			sourceTree = "<group>";
+		};
+		31F4665A1D2D671D00BEE00A /* Carleton-BeaconsTests */ = {
+			isa = PBXGroup;
+			children = (
+				31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */,
+				31F4665D1D2D671E00BEE00A /* Info.plist */,
+			);
+			path = "Carleton-BeaconsTests";
+			sourceTree = "<group>";
+		};
+		31F466651D2D671E00BEE00A /* Carleton-BeaconsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				31F466661D2D671E00BEE00A /* Carleton_BeaconsUITests.swift */,
+				31F466681D2D671E00BEE00A /* Info.plist */,
+			);
+			path = "Carleton-BeaconsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31F466421D2D671D00BEE00A /* Carleton-Beacons */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31F4666B1D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-Beacons" */;
+			buildPhases = (
+				31F4663F1D2D671D00BEE00A /* Sources */,
+				31F466401D2D671D00BEE00A /* Frameworks */,
+				31F466411D2D671D00BEE00A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Carleton-Beacons";
+			productName = "Carleton-Beacons";
+			productReference = 31F466431D2D671D00BEE00A /* Carleton-Beacons.app */;
+			productType = "com.apple.product-type.application";
+		};
+		31F466561D2D671D00BEE00A /* Carleton-BeaconsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31F4666E1D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-BeaconsTests" */;
+			buildPhases = (
+				31F466531D2D671D00BEE00A /* Sources */,
+				31F466541D2D671D00BEE00A /* Frameworks */,
+				31F466551D2D671D00BEE00A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31F466591D2D671D00BEE00A /* PBXTargetDependency */,
+			);
+			name = "Carleton-BeaconsTests";
+			productName = "Carleton-BeaconsTests";
+			productReference = 31F466571D2D671D00BEE00A /* Carleton-BeaconsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		31F466611D2D671E00BEE00A /* Carleton-BeaconsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31F466711D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-BeaconsUITests" */;
+			buildPhases = (
+				31F4665E1D2D671E00BEE00A /* Sources */,
+				31F4665F1D2D671E00BEE00A /* Frameworks */,
+				31F466601D2D671E00BEE00A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31F466641D2D671E00BEE00A /* PBXTargetDependency */,
+			);
+			name = "Carleton-BeaconsUITests";
+			productName = "Carleton-BeaconsUITests";
+			productReference = 31F466621D2D671E00BEE00A /* Carleton-BeaconsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31F4663B1D2D671D00BEE00A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Carleton College";
+				TargetAttributes = {
+					31F466421D2D671D00BEE00A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4C52MTZJ5U;
+					};
+					31F466561D2D671D00BEE00A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4C52MTZJ5U;
+						TestTargetID = 31F466421D2D671D00BEE00A;
+					};
+					31F466611D2D671E00BEE00A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4C52MTZJ5U;
+						TestTargetID = 31F466421D2D671D00BEE00A;
+					};
+				};
+			};
+			buildConfigurationList = 31F4663E1D2D671D00BEE00A /* Build configuration list for PBXProject "Carleton-Beacons" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 31F4663A1D2D671D00BEE00A;
+			productRefGroup = 31F466441D2D671D00BEE00A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31F466421D2D671D00BEE00A /* Carleton-Beacons */,
+				31F466561D2D671D00BEE00A /* Carleton-BeaconsTests */,
+				31F466611D2D671E00BEE00A /* Carleton-BeaconsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31F466411D2D671D00BEE00A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31F466511D2D671D00BEE00A /* LaunchScreen.storyboard in Resources */,
+				31F4664E1D2D671D00BEE00A /* Assets.xcassets in Resources */,
+				31F4664C1D2D671D00BEE00A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F466551D2D671D00BEE00A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F466601D2D671E00BEE00A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31F4663F1D2D671D00BEE00A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31F466491D2D671D00BEE00A /* ViewController.swift in Sources */,
+				31F466471D2D671D00BEE00A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F466531D2D671D00BEE00A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31F4665C1D2D671D00BEE00A /* Carleton_BeaconsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31F4665E1D2D671E00BEE00A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31F466671D2D671E00BEE00A /* Carleton_BeaconsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31F466591D2D671D00BEE00A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31F466421D2D671D00BEE00A /* Carleton-Beacons */;
+			targetProxy = 31F466581D2D671D00BEE00A /* PBXContainerItemProxy */;
+		};
+		31F466641D2D671E00BEE00A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31F466421D2D671D00BEE00A /* Carleton-Beacons */;
+			targetProxy = 31F466631D2D671E00BEE00A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		31F4664A1D2D671D00BEE00A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31F4664B1D2D671D00BEE00A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		31F4664F1D2D671D00BEE00A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31F466501D2D671D00BEE00A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		31F466691D2D671E00BEE00A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		31F4666A1D2D671E00BEE00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		31F4666C1D2D671E00BEE00A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Carleton-Beacons/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-Beacons";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		31F4666D1D2D671E00BEE00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Carleton-Beacons/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-Beacons";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		31F4666F1D2D671E00BEE00A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Carleton-BeaconsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-BeaconsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carleton-Beacons.app/Carleton-Beacons";
+			};
+			name = Debug;
+		};
+		31F466701D2D671E00BEE00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Carleton-BeaconsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-BeaconsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carleton-Beacons.app/Carleton-Beacons";
+			};
+			name = Release;
+		};
+		31F466721D2D671E00BEE00A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Carleton-BeaconsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-BeaconsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Carleton-Beacons";
+			};
+			name = Debug;
+		};
+		31F466731D2D671E00BEE00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Carleton-BeaconsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonbr.Carleton-BeaconsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Carleton-Beacons";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31F4663E1D2D671D00BEE00A /* Build configuration list for PBXProject "Carleton-Beacons" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31F466691D2D671E00BEE00A /* Debug */,
+				31F4666A1D2D671E00BEE00A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31F4666B1D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-Beacons" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31F4666C1D2D671E00BEE00A /* Debug */,
+				31F4666D1D2D671E00BEE00A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		31F4666E1D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-BeaconsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31F4666F1D2D671E00BEE00A /* Debug */,
+				31F466701D2D671E00BEE00A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		31F466711D2D671E00BEE00A /* Build configuration list for PBXNativeTarget "Carleton-BeaconsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31F466721D2D671E00BEE00A /* Debug */,
+				31F466731D2D671E00BEE00A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31F4663B1D2D671D00BEE00A /* Project object */;
+}
