@@ -1,0 +1,6 @@
+framework module Pods_Carleton_Beacons {
+  umbrella header "Pods-Carleton-Beacons-umbrella.h"
+
+  export *
+  module * { export * }
+}

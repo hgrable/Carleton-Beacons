@@ -1,22 +1,46 @@
 //
 //  AppDelegate.swift
-//  Carleton-Beacons
-//
-//  Created by bilskys on 7/6/16.
-//  Copyright © 2016 Carleton College. All rights reserved.
+//  Blank
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
-
+    
+    // Set the beacon manager's delegate
+    let beaconManager = ESTBeaconManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let beaconRegion1 = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "70A27C24-0DD0-4C4F-99B2-3F642A998F27")!, identifier: "test")
+        
+        ESTConfig.setupAppID("carleton-test-lxi", andAppToken: "7e5d90bb68e9df64bfe83dfc21559ee1")
+
+        // Set the beacon manager's delegate
+        self.beaconManager.delegate = self
+        
+        // Request always access to location services
+        self.beaconManager.requestAlwaysAuthorization()
+        
+        // Start monitoring for beacons in beaconRegion1, even when the app is not running
+        self.beaconManager.startMonitoringForRegion(beaconRegion1)
+        
+        // Request permission to send notifications
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
+        
         // Override point for customization after application launch.
         return true
+    }
+    
+    // Present notification when user enters a region
+    func beaconManager(manager: AnyObject, didDetermineState region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        notification.alertBody =
+            "You're in range of a beacon!"
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +65,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-
