@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Blank
+//  Carleton-Beacons
 //
 
 import UIKit

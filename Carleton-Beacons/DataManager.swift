@@ -1,6 +1,6 @@
 //
 //  DataManager.swift
-//  TopApps
+//  Carleton-Beacons
 //
 //  Created by Attila on 2015. 11. 10..
 //  Copyright © 2015. -. All rights reserved.
@@ -32,13 +32,13 @@ public class DataManager {
         loadDataTask.resume()
     }
 
-    public class func getBeaconInfoFromWebWithSuccess(success: ((BeaconInfo: NSData!) -> Void)) {
+    public class func getBeaconInfoFromWebWithSuccess(success: ((beaconInfo: NSData!) -> Void)) {
         //1
         loadDataFromURL(NSURL(string: BeaconInfoURL)!, completion:{(data, error) -> Void in
             //2
             if let data = data {
                 //3
-                success(BeaconInfo: data)
+                success(beaconInfo: data)
             }
         })
     }
