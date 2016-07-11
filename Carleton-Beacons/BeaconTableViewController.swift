@@ -90,13 +90,31 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         // Parse beacon info from JSON file and save parsed data
         var beaconInfo: [String: BeaconInfo] = Dictionary()
         
+        var newLastUpdatedDate: NSDate = NSDate(timeIntervalSince1970: 0)
+        
         guard let metadata = json["metadata"] as? [String: AnyObject] else {
                 print("Error serializing JSON metadata")
                 return
         }
-        let newLastUpdated = metadata["last-updated"]
-        //let oldLastUpdated =
-        print("Beacon info last updated at \(newLastUpdated)")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMM-dd-yyyy-HH:mm"
+        
+        if let newLastUpdatedStr = metadata["last-updated"] as? String {
+            newLastUpdatedDate = dateFormatter.dateFromString(newLastUpdatedStr)!
+            print("New beacon info last updated at \(newLastUpdatedDate)")
+        }
+        
+        if let oldLastUpdatedDate = NSKeyedUnarchiver.unarchiveObjectWithFile(BeaconInfo.LastUpdatedURL.path!) as? NSDate {
+            print("Old beacon info last updated at \(oldLastUpdatedDate)")
+            dateCompare: if newLastUpdatedDate.compare(oldLastUpdatedDate) != .OrderedDescending {
+                print("No new beacon info")
+                return
+            } else {
+                NSKeyedArchiver.archiveRootObject(newLastUpdatedDate, toFile: BeaconInfo.LastUpdatedURL.path!)
+                print("Parsing new beacon info")
+            }
+        }
         
         guard let data = json["data"] as? [String: [String: AnyObject]] else {
                 print("Error serializing JSON data")

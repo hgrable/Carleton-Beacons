@@ -15,6 +15,7 @@ class BeaconInfo: NSObject, NSCoding {
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("beacons")
+    static let LastUpdatedURL = DocumentsDirectory.URLByAppendingPathComponent("lastUpdated")
     
     init(title: String?, subtitle: String?, description: String?, image: String?) {
         if title != nil {
