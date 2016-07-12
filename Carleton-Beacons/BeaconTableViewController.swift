@@ -192,16 +192,24 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
         
-        cell.textLabel?.text = beaconInfoByTableOrder[indexPath.row].title
-        cell.textLabel?.contentScaleFactor
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        let imageView = cell.viewWithTag(101) as! UIImageView
+        let titleLabel = cell.viewWithTag(102) as! UILabel
+        let subtitleLabel = cell.viewWithTag(103) as! UILabel
         
-        cell.detailTextLabel?.text = beaconInfoByTableOrder[indexPath.row].subtitle
-        cell.detailTextLabel?.minimumScaleFactor = 0
-        cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel.text = beaconInfoByTableOrder[indexPath.row].title
+        subtitleLabel.text = beaconInfoByTableOrder[indexPath.row].subtitle
+        
+//        cell.textLabel?.text = beaconInfoByTableOrder[indexPath.row].title
+//        cell.textLabel?.contentScaleFactor
+//        cell.textLabel?.adjustsFontSizeToFitWidth = true
+//        
+//        cell.detailTextLabel?.text = beaconInfoByTableOrder[indexPath.row].subtitle
+//        cell.detailTextLabel?.minimumScaleFactor = 0
+//        cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
         
         let image = UIImage(named: "beacon")!
-        cell.imageView?.image = image
+        //cell.imageView?.image = image
+        imageView.image = image
         
         return cell
     }

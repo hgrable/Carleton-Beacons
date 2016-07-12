@@ -19,9 +19,6 @@ class BeaconViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Change back button text to "Back"
-        self.navigationController?.navigationBar.topItem?.title = "Back"
-        
         self.title = beaconInfoObj?.title
         self.subtitleLabel.text = beaconInfoObj?.subtitle
         self.descriptionText.text = beaconInfoObj?.descriptionText

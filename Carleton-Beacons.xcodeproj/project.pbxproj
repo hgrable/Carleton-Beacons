@@ -12,7 +12,6 @@
 		31E996B21D2D6A1800E488D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A51D2D6A1800E488D8 /* Assets.xcassets */; };
 		31E996B31D2D6A1800E488D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A71D2D6A1800E488D8 /* LaunchScreen.storyboard */; };
 		31E996B41D2D6A1800E488D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A91D2D6A1800E488D8 /* Main.storyboard */; };
-		31E996B51D2D6A1800E488D8 /* BeaconTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31E996AB1D2D6A1800E488D8 /* BeaconTableCell.xib */; };
 		31E996B61D2D6A1800E488D8 /* BeaconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */; };
 		31E996B71D2D6A1800E488D8 /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */; };
 		31E996BB1D2D84B300E488D8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996BA1D2D84B300E488D8 /* DataManager.swift */; };
@@ -43,7 +42,6 @@
 		31E996A51D2D6A1800E488D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31E996A81D2D6A1800E488D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31E996AA1D2D6A1800E488D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		31E996AB1D2D6A1800E488D8 /* BeaconTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeaconTableCell.xib; sourceTree = "<group>"; };
 		31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTableViewController.swift; sourceTree = "<group>"; };
 		31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 		31E996AE1D2D6A1800E488D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				31E996A91D2D6A1800E488D8 /* Main.storyboard */,
 				31E996A71D2D6A1800E488D8 /* LaunchScreen.storyboard */,
 				31E996A51D2D6A1800E488D8 /* Assets.xcassets */,
-				31E996AB1D2D6A1800E488D8 /* BeaconTableCell.xib */,
 				31E996AF1D2D6A1800E488D8 /* ObjCBridge.h */,
 				31E996AE1D2D6A1800E488D8 /* Info.plist */,
 			);
@@ -273,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31E996B51D2D6A1800E488D8 /* BeaconTableCell.xib in Resources */,
 				31E996B41D2D6A1800E488D8 /* Main.storyboard in Resources */,
 				31E996B21D2D6A1800E488D8 /* Assets.xcassets in Resources */,
 				31E996B31D2D6A1800E488D8 /* LaunchScreen.storyboard in Resources */,
