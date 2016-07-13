@@ -22,22 +22,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVN-8W-AYT">
-                                            <rect key="frame" x="2" y="1" width="69" height="69"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-SX-BWd" userLabel="Title">
-                                            <rect key="frame" x="76" y="-8" width="514" height="60"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-SX-BWd" userLabel="Title">
+                                            <rect key="frame" x="76" y="0.0" width="514" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="42" id="O2t-XL-TEJ"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr3-95-l6K" userLabel="Subtitle">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr3-95-l6K" userLabel="Subtitle">
                                             <rect key="frame" x="76" y="40" width="514" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVN-8W-AYT">
+                                            <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="71" id="at3-PC-hTm"/>
+                                                <constraint firstAttribute="width" constant="71" id="ccz-tv-WFF"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Sr3-95-l6K" secondAttribute="trailing" constant="2" id="7VS-sc-8am"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KfL-SX-BWd" secondAttribute="trailing" constant="2" id="8rO-B4-pl5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Sr3-95-l6K" secondAttribute="bottom" id="GiM-RT-B5X"/>
+                                        <constraint firstItem="Sr3-95-l6K" firstAttribute="top" secondItem="KfL-SX-BWd" secondAttribute="bottom" constant="-2" id="Y3z-K0-Q4V"/>
+                                        <constraint firstItem="KfL-SX-BWd" firstAttribute="leading" secondItem="rVN-8W-AYT" secondAttribute="trailing" constant="5" id="lRa-fV-gN9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KfL-SX-BWd" secondAttribute="bottom" constant="20" id="r1c-XO-hMh"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="rVN-8W-AYT" secondAttribute="leading" constant="8" id="rpa-f3-g4c"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="rVN-8W-AYT" secondAttribute="bottom" constant="-9" id="sqh-nJ-VqS"/>
+                                        <constraint firstItem="Sr3-95-l6K" firstAttribute="leading" secondItem="rVN-8W-AYT" secondAttribute="trailing" constant="5" id="xgx-Sf-g9f"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="J4y-K1-glA" kind="show" identifier="BeaconSegue" id="E0h-ZC-LQC"/>

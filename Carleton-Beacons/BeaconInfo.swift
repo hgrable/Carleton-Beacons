@@ -6,12 +6,17 @@
 //  Copyright © 2016 Carleton College. All rights reserved.
 //
 
+import UIKit
+
 class BeaconInfo: NSObject, NSCoding {
     
     var title: String = ""
     var subtitle: String = ""
     var descriptionText: String = ""
     var image: String = ""
+    
+    var imageFull: UIImage?
+    var imageThumb: UIImage?
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("beacons")
@@ -31,6 +36,7 @@ class BeaconInfo: NSObject, NSCoding {
             self.image = image!
         }
         super.init()
+        self.loadBeaconImages(self.image)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -47,6 +53,20 @@ class BeaconInfo: NSObject, NSCoding {
         let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as! String
         self.init(title: title, subtitle: subtitle, description: descriptionText, image: image)
     }
+    
+    func loadBeaconImages(name: String) {
+        let urlThumb = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/images/thumbs/\(name).png")!
+        let urlFull = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/images/\(name).png")!
+        
+        DataManager.getImageFromWebWithSuccess(urlThumb, success: { image -> Void in
+            self.imageThumb = image
+        })
+        
+        DataManager.getImageFromWebWithSuccess(urlFull, success: { image -> Void in
+            self.imageFull = image
+        })
+    }
+
 }
 
 struct PropertyKey {

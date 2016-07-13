@@ -33,6 +33,12 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         
         self.beaconManager.requestWhenInUseAuthorization()
         
+        // Set navigation bar style
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 43.0/255.0, green: 97.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size:18)!]
+        
         self.beaconInfo = Dictionary()
         
         getBeaconInfoJSON() { (dataHasBeenLoaded) -> Void in
@@ -72,8 +78,11 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
        
     func getBeaconInfoJSON(completion: (dataHasBeenLoaded: Bool) -> Void) {
         // Download JSON file containing beacon info
+        let infoJSONUrl = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/beacons.json")!
+        
         var json: [String: AnyObject] = Dictionary()
-        DataManager.getBeaconInfoFromWebWithSuccess() { (jsonData) -> Void in
+        
+        DataManager.getBeaconInfoFromWebWithSuccess(infoJSONUrl) { (jsonData) -> Void in
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
                 self.parseJSONInfo(json)
@@ -161,7 +170,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         let beaconInfoObj = self.beaconInfo[beaconKey] as BeaconInfo!
         return beaconInfoObj
     }
-    
+
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var beaconInfoByTableOrder: [BeaconInfo] = Array()
         
@@ -196,20 +205,15 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         let titleLabel = cell.viewWithTag(102) as! UILabel
         let subtitleLabel = cell.viewWithTag(103) as! UILabel
         
+        titleLabel.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
         titleLabel.text = beaconInfoByTableOrder[indexPath.row].title
         subtitleLabel.text = beaconInfoByTableOrder[indexPath.row].subtitle
         
-//        cell.textLabel?.text = beaconInfoByTableOrder[indexPath.row].title
-//        cell.textLabel?.contentScaleFactor
-//        cell.textLabel?.adjustsFontSizeToFitWidth = true
-//        
-//        cell.detailTextLabel?.text = beaconInfoByTableOrder[indexPath.row].subtitle
-//        cell.detailTextLabel?.minimumScaleFactor = 0
-//        cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
-        
-        let image = UIImage(named: "beacon")!
-        //cell.imageView?.image = image
-        imageView.image = image
+        if let image = beaconInfoByTableOrder[indexPath.row].imageThumb {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "placeholder")
+        }
         
         return cell
     }

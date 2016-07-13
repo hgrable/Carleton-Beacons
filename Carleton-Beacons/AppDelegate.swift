@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         UIApplication.sharedApplication().registerUserNotificationSettings(
             UIUserNotificationSettings(forTypes: .Alert, categories: nil))
         
+        // Set global font
+        UILabel.appearance().font = UIFont(name: "TrebuchetMS", size: 14)
+        
         // Override point for customization after application launch.
         return true
     }

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-let BeaconInfoURL = "http://people.carleton.edu/~bilskys/beacons/beacons.json"
+//let BeaconInfoURL = "http://people.carleton.edu/~bilskys/beacons/beacons.json"
 
 public class DataManager {
   
@@ -32,13 +33,27 @@ public class DataManager {
         loadDataTask.resume()
     }
 
-    public class func getBeaconInfoFromWebWithSuccess(success: ((beaconInfo: NSData!) -> Void)) {
+    public class func getBeaconInfoFromWebWithSuccess(url: NSURL, success: ((beaconInfo: NSData!) -> Void)) {
         //1
-        loadDataFromURL(NSURL(string: BeaconInfoURL)!, completion:{(data, error) -> Void in
+        loadDataFromURL(url, completion: { (data, error) -> Void in
             //2
             if let data = data {
                 //3
                 success(beaconInfo: data)
+            }
+        })
+    }
+    
+    public class func getImageFromWebWithSuccess(url: NSURL, success: ((image: UIImage) -> Void)) {
+        loadDataFromURL(url, completion: { (data, error) -> Void in
+            if let data = data {
+                if let image = UIImage(data: data) {
+                    success(image: image)
+                } else {
+                    print("Error processing downloaded image")
+                }
+            } else {
+                print("Error downloading image")
             }
         })
     }

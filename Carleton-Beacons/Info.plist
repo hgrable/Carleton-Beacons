@@ -37,6 +37,12 @@
 	<string>Apps can&apos;t detect beacons without access to Location Services. (You can change this message in the Info.plist file.)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Apps can&apos;t detect beacons without access to Location Services.</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIStatusBarHidden</key>
+	<false/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
