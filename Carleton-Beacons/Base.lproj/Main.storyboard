@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -86,16 +87,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHV-2Z-lbM" userLabel="Description">
-                                <rect key="frame" x="20" y="144" width="560" height="436"/>
+                                <rect key="frame" x="8" y="304" width="584" height="288"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-a3-Uzg">
+                                <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuN-9H-c1K" userLabel="Subtitle">
-                                <rect key="frame" x="20" y="72" width="560" height="64"/>
+                                <rect key="frame" x="8" y="272" width="584" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="xGU-r3-GDc"/>
+                                    <constraint firstAttribute="height" constant="24" id="cRU-Mc-wft"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,17 +108,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZHV-2Z-lbM" secondAttribute="trailing" id="CmE-84-suy"/>
-                            <constraint firstItem="HuN-9H-c1K" firstAttribute="top" secondItem="gcK-tw-gCI" secondAttribute="bottom" constant="8" symbolic="YES" id="Lsf-bd-mp2"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ZHV-2Z-lbM" secondAttribute="leading" id="MEf-3E-hvv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HuN-9H-c1K" secondAttribute="trailing" id="SAC-Cr-n5O"/>
-                            <constraint firstItem="bBJ-Fp-VWw" firstAttribute="top" secondItem="ZHV-2Z-lbM" secondAttribute="bottom" constant="20" id="Vly-XB-gC0"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="HuN-9H-c1K" secondAttribute="leading" id="WvI-gF-6XF"/>
-                            <constraint firstItem="ZHV-2Z-lbM" firstAttribute="top" secondItem="HuN-9H-c1K" secondAttribute="bottom" constant="8" id="dMw-s4-yKD"/>
+                            <constraint firstItem="ZHV-2Z-lbM" firstAttribute="top" secondItem="Mfj-a3-Uzg" secondAttribute="bottom" constant="40" id="4dd-mD-UXb"/>
+                            <constraint firstItem="Mfj-a3-Uzg" firstAttribute="leading" secondItem="aqo-ub-O4B" secondAttribute="leadingMargin" constant="-20" id="Bwl-CG-Egy"/>
+                            <constraint firstItem="HuN-9H-c1K" firstAttribute="leading" secondItem="aqo-ub-O4B" secondAttribute="leadingMargin" constant="-12" id="EuF-Bc-TJo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mfj-a3-Uzg" secondAttribute="trailing" constant="-20" id="Nz8-gk-GdG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HuN-9H-c1K" secondAttribute="trailing" constant="-12" id="SOH-Oh-ap5"/>
+                            <constraint firstItem="Mfj-a3-Uzg" firstAttribute="bottom" secondItem="aqo-ub-O4B" secondAttribute="centerY" constant="-36" id="Vi3-kT-0qQ"/>
+                            <constraint firstItem="ZHV-2Z-lbM" firstAttribute="leading" secondItem="aqo-ub-O4B" secondAttribute="leadingMargin" constant="-12" id="aKB-3v-bvk"/>
+                            <constraint firstItem="Mfj-a3-Uzg" firstAttribute="top" secondItem="gcK-tw-gCI" secondAttribute="bottom" id="kK9-zM-bhy"/>
+                            <constraint firstItem="bBJ-Fp-VWw" firstAttribute="top" secondItem="ZHV-2Z-lbM" secondAttribute="bottom" constant="8" id="nhF-gY-fea"/>
+                            <constraint firstItem="HuN-9H-c1K" firstAttribute="top" secondItem="Mfj-a3-Uzg" secondAttribute="bottom" constant="8" id="ofl-mJ-pkQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZHV-2Z-lbM" secondAttribute="trailing" constant="-12" id="swk-Cl-Vpq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionText" destination="ZHV-2Z-lbM" id="tLm-fI-XW1"/>
+                        <outlet property="imageView" destination="Mfj-a3-Uzg" id="QjT-2r-HnI"/>
                         <outlet property="subtitleLabel" destination="HuN-9H-c1K" id="4s8-eM-xtv"/>
                     </connections>
                 </viewController>

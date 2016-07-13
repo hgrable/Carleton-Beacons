@@ -22,16 +22,12 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     
     var beaconInfoByTableOrder: [BeaconInfo] = Array()
     
-    var beaconInfoHasBeenSaved = false
-    
-    var beaconInfoHasBeenLoaded = false
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         self.beaconManager.delegate = self
         
         self.beaconManager.requestWhenInUseAuthorization()
+        
+        self.preferredStatusBarStyle()
         
         // Set navigation bar style
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
@@ -41,12 +37,16 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         
         self.beaconInfo = Dictionary()
         
-        getBeaconInfoJSON() { (dataHasBeenLoaded) -> Void in
+        getBeaconInfo() { (dataHasBeenLoaded) -> Void in
             if dataHasBeenLoaded {
                 // print("Stopping activity indicator")
                 // self.activityIndicator.stopAnimating()
             }
         }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,7 +76,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         self.activityIndicator.startAnimating()
     }
        
-    func getBeaconInfoJSON(completion: (dataHasBeenLoaded: Bool) -> Void) {
+    func getBeaconInfo(completion: (dataHasBeenLoaded: Bool) -> Void) {
         // Download JSON file containing beacon info
         let infoJSONUrl = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/beacons.json")!
         
@@ -85,7 +85,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         DataManager.getBeaconInfoFromWebWithSuccess(infoJSONUrl) { (jsonData) -> Void in
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
-                self.parseJSONInfo(json)
+                DataManager.parseJSONInfo(json)
                 self.loadBeaconInfo()
                 completion(dataHasBeenLoaded: true)
             } catch {
@@ -95,73 +95,8 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         }
     }
     
-    func parseJSONInfo(json: [String: AnyObject]) {
-        // Parse beacon info from JSON file and save parsed data
-        var beaconInfo: [String: BeaconInfo] = Dictionary()
-        
-        var newLastUpdatedDate: NSDate = NSDate(timeIntervalSince1970: 0)
-        
-        guard let metadata = json["metadata"] as? [String: AnyObject] else {
-                print("Error serializing JSON metadata")
-                return
-        }
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MMM-dd-yyyy-HH:mm"
-        
-        if let newLastUpdatedStr = metadata["last-updated"] as? String {
-            newLastUpdatedDate = dateFormatter.dateFromString(newLastUpdatedStr)!
-            print("New beacon info last updated at \(newLastUpdatedDate)")
-        }
-        
-        if let oldLastUpdatedDate = NSKeyedUnarchiver.unarchiveObjectWithFile(BeaconInfo.LastUpdatedURL.path!) as? NSDate {
-            print("Old beacon info last updated at \(oldLastUpdatedDate)")
-            dateCompare: if newLastUpdatedDate.compare(oldLastUpdatedDate) != .OrderedDescending {
-                print("No new beacon info")
-                return
-            } else {
-                NSKeyedArchiver.archiveRootObject(newLastUpdatedDate, toFile: BeaconInfo.LastUpdatedURL.path!)
-                print("Parsing new beacon info")
-            }
-        }
-        
-        guard let data = json["data"] as? [String: [String: AnyObject]] else {
-                print("Error serializing JSON data")
-                return
-        }
-        
-        guard let allBeacons = data["beacons"] as? [String: [String: String]] else {
-                print("Error serializing JSON data")
-                return
-        }
-        
-        for beacon in allBeacons {
-            let beaconKey = beacon.0
-            let beaconInfoDict = beacon.1
-            
-            let title = beaconInfoDict["title"]
-            let subtitle = beaconInfoDict["subtitle"]
-            let description = beaconInfoDict["description"]
-            let image = beaconInfoDict["image"]
-            
-            let beaconInfoObj = BeaconInfo(title: title, subtitle: subtitle, description: description, image: image)
-            beaconInfo[beaconKey] = beaconInfoObj
-        }
-        // Persist dictionary of BeaconInfo objects
-        let beaconInfoSaved = NSKeyedArchiver.archiveRootObject(beaconInfo, toFile: BeaconInfo.ArchiveURL.path!)
-        print("Beacon info saved!")
-        print("Beacon info:")
-        print(beaconInfo)
-        self.beaconInfoHasBeenSaved = true
-        
-        if !beaconInfoSaved {
-            print("Error saving beacon info dictionary")
-        }
-    }
-    
     func loadBeaconInfo() {
         self.beaconInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(BeaconInfo.ArchiveURL.path!) as! [String: BeaconInfo]
-        self.beaconInfoHasBeenLoaded = true
         print("Beacon info loaded!")
     }
     
@@ -219,13 +154,10 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "BeaconSegue" {
-//            print("Correct segue")
         let selectedRow = tableView.indexPathForSelectedRow?.row
         
         if let dest = segue.destinationViewController as? BeaconViewController {
             dest.beaconInfoObj = beaconInfoByTableOrder[selectedRow!]
-            //}
         }
     }
 }
