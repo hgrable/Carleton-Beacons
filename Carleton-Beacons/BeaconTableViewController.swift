@@ -31,7 +31,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         
         // Set navigation bar style
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 43.0/255.0, green: 97.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green: 39.0/255.0, blue: 118.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size:18)!]
         
@@ -75,7 +75,7 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         self.view.addSubview(self.activityIndicator)
         self.activityIndicator.startAnimating()
     }
-       
+
     func getBeaconInfo(completion: (dataHasBeenLoaded: Bool) -> Void) {
         // Download JSON file containing beacon info
         let infoJSONUrl = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/beacons.json")!
@@ -116,8 +116,12 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
             }
         
         for beacon in beacons {
-            let beaconInfoObj = getBeaconInfoForBeacon(beacon)
-            beaconInfoByTableOrder.append(beaconInfoObj!)
+            // RSSI = Received Signal Strength Indicator (dBs)
+            // -85 dBs corresponds to about 10 feet away
+            if beacon.rssi >= -85 {
+                let beaconInfoObj = getBeaconInfoForBeacon(beacon)
+                beaconInfoByTableOrder.append(beaconInfoObj!)
+            }
         }
         
         self.beaconInfoByTableOrder = beaconInfoByTableOrder
