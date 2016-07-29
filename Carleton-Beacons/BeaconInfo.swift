@@ -14,15 +14,17 @@ class BeaconInfo: NSObject, NSCoding {
     var subtitle: String = ""
     var descriptionText: String = ""
     var image: String = ""
+    var urlString: String = ""
     
     var imageFull: UIImage?
     var imageThumb: UIImage?
+    var url: NSURL = NSURL()
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("beacons")
     static let LastUpdatedURL = DocumentsDirectory.URLByAppendingPathComponent("lastUpdated")
     
-    init(title: String?, subtitle: String?, description: String?, image: String?) {
+    init(title: String?, subtitle: String?, description: String?, image: String?, urlString: String?) {
         if title != nil {
             self.title = title!
         }
@@ -35,8 +37,12 @@ class BeaconInfo: NSObject, NSCoding {
         if image != nil {
             self.image = image!
         }
+        if urlString != nil {
+            self.urlString = urlString!
+        }
         super.init()
         self.loadBeaconImages(self.image)
+        self.url = NSURL(string: urlString!)!
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -44,6 +50,7 @@ class BeaconInfo: NSObject, NSCoding {
         aCoder.encodeObject(subtitle, forKey: PropertyKey.subtitleKey)
         aCoder.encodeObject(descriptionText, forKey: PropertyKey.descriptionKey)
         aCoder.encodeObject(image, forKey: PropertyKey.imageKey)
+        aCoder.encodeObject(urlString, forKey: PropertyKey.urlKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -51,7 +58,8 @@ class BeaconInfo: NSObject, NSCoding {
         let subtitle = aDecoder.decodeObjectForKey(PropertyKey.subtitleKey) as! String
         let descriptionText = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
         let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as! String
-        self.init(title: title, subtitle: subtitle, description: descriptionText, image: image)
+        let urlString = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! String
+        self.init(title: title, subtitle: subtitle, description: descriptionText, image: image, urlString: urlString)
     }
     
     func loadBeaconImages(name: String) {
@@ -74,4 +82,5 @@ struct PropertyKey {
     static let subtitleKey = "subtitle"
     static let descriptionKey = "description"
     static let imageKey = "imageKey"
+    static let urlKey = "urlKey"
 }

@@ -9,7 +9,9 @@
 import UIKit
 import Foundation
 
-class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate {
+class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ESTBeaconManagerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var activityIndicator = UIActivityIndicatorView()
@@ -33,7 +35,14 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green: 39.0/255.0, blue: 118.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size:18)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 20)!]
+        self.navigationController?.navigationBar.topItem!.title = "Exhibits Near You"
+        
+        //let tableCellNib = UINib(nibName: "BeaconTableCell", bundle: nil)
+        //self.tableView.registerNib(tableCellNib, forCellReuseIdentifier: "Basic")
+        //self.tableView.registerClass(BeaconTableCell.self, forCellReuseIdentifier: "Basic")
+        tableView.delegate = self
+        tableView.dataSource = self
         
         self.beaconInfo = Dictionary()
         
@@ -129,26 +138,30 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
         self.tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return beaconInfoByTableOrder.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Basic")!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Basic", forIndexPath: indexPath) as UITableViewCell
+        let row = indexPath.row
         
-        let imageView = cell.viewWithTag(101) as! UIImageView
-        let titleLabel = cell.viewWithTag(102) as! UILabel
-        let subtitleLabel = cell.viewWithTag(103) as! UILabel
+        let imageView = cell.contentView.viewWithTag(103) as! UIImageView
+        let subtitleLabel = cell.contentView.viewWithTag(102) as! UILabel
+        let titleLabel = cell.contentView.viewWithTag(101) as! UILabel
+
+        titleLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+        titleLabel.text = beaconInfoByTableOrder[row].title
         
-        titleLabel.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
-        titleLabel.text = beaconInfoByTableOrder[indexPath.row].title
-        subtitleLabel.text = beaconInfoByTableOrder[indexPath.row].subtitle
+        subtitleLabel.font = UIFont(name: "TrebuchetMS", size: 14)
+        subtitleLabel.textColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0)
+        subtitleLabel.text = beaconInfoByTableOrder[row].subtitle
         
-        if let image = beaconInfoByTableOrder[indexPath.row].imageThumb {
+        if let image = beaconInfoByTableOrder[row].imageThumb {
             imageView.image = image
         } else {
             imageView.image = UIImage(named: "placeholder")
@@ -158,10 +171,15 @@ class BeaconTableViewController: UITableViewController, ESTBeaconManagerDelegate
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let selectedRow = tableView.indexPathForSelectedRow?.row
         
-        if let dest = segue.destinationViewController as? BeaconViewController {
-            dest.beaconInfoObj = beaconInfoByTableOrder[selectedRow!]
+        if segue.identifier == "BeaconWebSegue" {
+            
+            let row = tableView.indexPathForSelectedRow?.row
+            
+            if let dest = segue.destinationViewController as? BeaconWebViewController {
+                //dest.url = NSURL(string: "http://apps.carleton.edu/visitors")!
+                dest.beaconInfoObj = beaconInfoByTableOrder[row!]
+            }
         }
     }
 }

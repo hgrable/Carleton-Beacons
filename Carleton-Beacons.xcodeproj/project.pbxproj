@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2DBE3A316A7A06313F5DED20 /* Pods_Carleton_Beacons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42A6B6EFE23AF98E9067DC6 /* Pods_Carleton_Beacons.framework */; };
+		311266371D4BDAD4003477B7 /* BeaconWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311266361D4BDAD4003477B7 /* BeaconWebViewController.swift */; };
 		31E996B11D2D6A1800E488D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996A41D2D6A1800E488D8 /* AppDelegate.swift */; };
 		31E996B21D2D6A1800E488D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A51D2D6A1800E488D8 /* Assets.xcassets */; };
 		31E996B31D2D6A1800E488D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A71D2D6A1800E488D8 /* LaunchScreen.storyboard */; };
 		31E996B41D2D6A1800E488D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E996A91D2D6A1800E488D8 /* Main.storyboard */; };
 		31E996B61D2D6A1800E488D8 /* BeaconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */; };
-		31E996B71D2D6A1800E488D8 /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */; };
 		31E996BB1D2D84B300E488D8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996BA1D2D84B300E488D8 /* DataManager.swift */; };
 		31E996BD1D2DB50400E488D8 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E996BC1D2DB50400E488D8 /* BeaconInfo.swift */; };
 		31F4665C1D2D671D00BEE00A /* Carleton_BeaconsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4665B1D2D671D00BEE00A /* Carleton_BeaconsTests.swift */; };
@@ -38,12 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		311266361D4BDAD4003477B7 /* BeaconWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconWebViewController.swift; sourceTree = "<group>"; };
 		31E996A41D2D6A1800E488D8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31E996A51D2D6A1800E488D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31E996A81D2D6A1800E488D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31E996AA1D2D6A1800E488D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTableViewController.swift; sourceTree = "<group>"; };
-		31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 		31E996AE1D2D6A1800E488D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E996AF1D2D6A1800E488D8 /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		31E996BA1D2D84B300E488D8 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			children = (
 				31E996A41D2D6A1800E488D8 /* AppDelegate.swift */,
 				31E996AC1D2D6A1800E488D8 /* BeaconTableViewController.swift */,
-				31E996AD1D2D6A1800E488D8 /* BeaconViewController.swift */,
+				311266361D4BDAD4003477B7 /* BeaconWebViewController.swift */,
 				31E996BA1D2D84B300E488D8 /* DataManager.swift */,
 				31E996BC1D2DB50400E488D8 /* BeaconInfo.swift */,
 				31E996A91D2D6A1800E488D8 /* Main.storyboard */,
@@ -347,8 +347,8 @@
 			files = (
 				31E996B11D2D6A1800E488D8 /* AppDelegate.swift in Sources */,
 				31E996BB1D2D84B300E488D8 /* DataManager.swift in Sources */,
-				31E996B71D2D6A1800E488D8 /* BeaconViewController.swift in Sources */,
 				31E996B61D2D6A1800E488D8 /* BeaconTableViewController.swift in Sources */,
+				311266371D4BDAD4003477B7 /* BeaconWebViewController.swift in Sources */,
 				31E996BD1D2DB50400E488D8 /* BeaconInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

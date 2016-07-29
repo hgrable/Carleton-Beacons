@@ -106,8 +106,9 @@ public class DataManager {
             let subtitle = beaconInfoDict["subtitle"]
             let description = beaconInfoDict["description"]
             let image = beaconInfoDict["image"]
+            let url = beaconInfoDict["url"]
             
-            let beaconInfoObj = BeaconInfo(title: title, subtitle: subtitle, description: description, image: image)
+            let beaconInfoObj = BeaconInfo(title: title, subtitle: subtitle, description: description, image: image, urlString: url)
             beaconInfo[beaconKey] = beaconInfoObj
         }
         // Persist dictionary of BeaconInfo objects
