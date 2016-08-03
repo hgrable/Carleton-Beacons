@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-//let BeaconInfoURL = "http://people.carleton.edu/~bilskys/beacons/beacons.json"
 
 public class DataManager {
   
+    // Generic asynchronous download function
     public class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.URLCache = nil
@@ -34,24 +34,29 @@ public class DataManager {
     }
 
     public class func getBeaconInfoFromWebWithSuccess(url: NSURL, success: ((beaconInfo: NSData!) -> Void)) {
-        //1
+        // 1. Download beacon info JSON asynchronously
         loadDataFromURL(url, completion: { (data, error) -> Void in
-            //2
+            // 2. Check to make sure that the data downloaded is not nil
             if let data = data {
-                //3
+                // 3. If so, call the success handler
                 success(beaconInfo: data)
             }
         })
     }
     
     public class func getImageFromWebWithSuccess(url: NSURL, success: ((image: UIImage) -> Void)) {
+        // 1. Download image asynchronously
         loadDataFromURL(url, completion: { (data, error) -> Void in
+            // 2. Check to make sure that the data downloaded is not nil
             if let data = data {
+                // 3. If so, call the success handler
                 if let image = UIImage(data: data) {
                     success(image: image)
+                // 3. b) If not, print an error message
                 } else {
                     print("Error processing downloaded image")
                 }
+            // 2. b) If data is nil, then print an error message
             } else {
                 print("Error downloading image")
             }
@@ -111,6 +116,7 @@ public class DataManager {
             let beaconInfoObj = BeaconInfo(title: title, subtitle: subtitle, description: description, image: image, urlString: url)
             beaconInfo[beaconKey] = beaconInfoObj
         }
+        
         // Persist dictionary of BeaconInfo objects
         let beaconInfoSaved = NSKeyedArchiver.archiveRootObject(beaconInfo, toFile: BeaconInfo.ArchiveURL.path!)
         print("Beacon info saved!")

@@ -27,6 +27,7 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         self.beaconManager.delegate = self
         
+        // Ask user to authorize location services when the app is in use
         self.beaconManager.requestWhenInUseAuthorization()
         
         self.preferredStatusBarStyle()
@@ -38,9 +39,7 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 20)!]
         self.navigationController?.navigationBar.topItem!.title = "Exhibits Near You"
         
-        //let tableCellNib = UINib(nibName: "BeaconTableCell", bundle: nil)
-        //self.tableView.registerNib(tableCellNib, forCellReuseIdentifier: "Basic")
-        //self.tableView.registerClass(BeaconTableCell.self, forCellReuseIdentifier: "Basic")
+        // Set up the UITableView as a subview of this view controller
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -55,18 +54,19 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        // Set the status bar style to light content so that it's readable against the blue navigation bar
         return UIStatusBarStyle.LightContent
     }
     
     override func viewWillAppear(animated: Bool) {
-        // start ranging for beacons when app is launched
+        // Start ranging for beacons when app is launched
         super.viewWillAppear(animated)
         
         self.beaconManager.startRangingBeaconsInRegion(self.beaconRegion)
     }
     
     override func viewDidDisappear(animated: Bool) {
-        // stop ranging for beacons when app is quit
+        // Stop ranging for beacons when app is quit
         super.viewDidDisappear(animated)
         
         self.beaconManager.stopRangingBeaconsInRegion(self.beaconRegion)
@@ -85,13 +85,17 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         self.activityIndicator.startAnimating()
     }
 
+    // Communicates with the server to check for updated beacon info, and download it if found
     func getBeaconInfo(completion: (dataHasBeenLoaded: Bool) -> Void) {
-        // Download JSON file containing beacon info
+        
+        // Location of beacon info JSON
         let infoJSONUrl = NSURL(string: "http://people.carleton.edu/~bilskys/beacons/beacons.json")!
         
         var json: [String: AnyObject] = Dictionary()
         
+        // Asynchronously download beacon info JSON, parse into a Swift dictionary, save, and load into memory
         DataManager.getBeaconInfoFromWebWithSuccess(infoJSONUrl) { (jsonData) -> Void in
+            // Once the data is downloaded, do the parsing and saving and loading stuff
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
                 DataManager.parseJSONInfo(json)
@@ -104,17 +108,19 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    // Loads archived dictionary of BeaconInfo objects
     func loadBeaconInfo() {
         self.beaconInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(BeaconInfo.ArchiveURL.path!) as! [String: BeaconInfo]
-        print("Beacon info loaded!")
     }
     
+    // Helper function; looks up a BeaconInfo object using the minor and major values of the given beacon
     func getBeaconInfoForBeacon(beacon: CLBeacon) -> BeaconInfo? {
         let beaconKey = "\(beacon.major):\(beacon.minor)"
         let beaconInfoObj = self.beaconInfo[beaconKey] as BeaconInfo!
         return beaconInfoObj
     }
 
+    // The beaconManager function runs more or less continuously to update the beacons that are visible to the phone.
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         var beaconInfoByTableOrder: [BeaconInfo] = Array()
         
@@ -124,6 +130,9 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
                 return
             }
         
+        // The beaconInfoByTableOrder array will be used as the data source for the table.
+        // We only want to add beacons to it with a minimum level of signal strength, a.k.a maximum distance.
+        // The beacons list is already ordered by approximate distance, so beaconInfoByTableOrder will be too.
         for beacon in beacons {
             // RSSI = Received Signal Strength Indicator (dBs)
             // -85 dBs corresponds to about 10 feet away
@@ -150,17 +159,21 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("Basic", forIndexPath: indexPath) as UITableViewCell
         let row = indexPath.row
         
-        let imageView = cell.contentView.viewWithTag(103) as! UIImageView
-        let subtitleLabel = cell.contentView.viewWithTag(102) as! UILabel
+        // Connect title, subtitle, and image subviews
         let titleLabel = cell.contentView.viewWithTag(101) as! UILabel
+        let subtitleLabel = cell.contentView.viewWithTag(102) as! UILabel
+        let imageView = cell.contentView.viewWithTag(103) as! UIImageView
 
+        // Set cell title
         titleLabel.font = UIFont(name: "TrebuchetMS", size: 20)
         titleLabel.text = beaconInfoByTableOrder[row].title
         
+        // Set cell subtitle
         subtitleLabel.font = UIFont(name: "TrebuchetMS", size: 14)
         subtitleLabel.textColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0)
         subtitleLabel.text = beaconInfoByTableOrder[row].subtitle
         
+        // Set cell image (placeholder if imageThumb doesn't exist)
         if let image = beaconInfoByTableOrder[row].imageThumb {
             imageView.image = image
         } else {
@@ -172,12 +185,12 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        // Send beacon information to detail view when user taps on a cell in the table
         if segue.identifier == "BeaconWebSegue" {
             
             let row = tableView.indexPathForSelectedRow?.row
             
             if let dest = segue.destinationViewController as? BeaconWebViewController {
-                //dest.url = NSURL(string: "http://apps.carleton.edu/visitors")!
                 dest.beaconInfoObj = beaconInfoByTableOrder[row!]
             }
         }
