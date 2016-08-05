@@ -1,0 +1,30 @@
+{
+  "data": {
+    "beacons": {
+      "456": {
+        "title": "Light Blue",
+        "subtitle": "Light Blue subtitle text",
+        "description": "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.",
+        "image": "chapel",
+        "url": "http://apps.carleton.edu/visitors"
+      },
+      "789": {
+        "title": "Light Green",
+        "subtitle": "This is a very very very very very long subtitle text so that we can test that the subtitle label wraps text properly. I think this should be long enough.",
+        "description": "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.",
+        "image": "sayles-hill",
+        "url": "http://apps.carleton.edu/150/app"
+      },
+      "50787": {
+        "title": "Purple",
+        "subtitle": "Testing testing 123",
+        "description": "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.",
+        "image": "carleton_wiki",
+        "url": "http://apps.carleton.edu/academics/faculty"
+      }
+    }
+  },
+  "metadata": {
+    "last-updated": "Aug-05-2016-14:11"
+  }
+}
