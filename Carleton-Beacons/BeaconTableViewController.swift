@@ -13,12 +13,9 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var activityIndicator = UIActivityIndicatorView()
-    
     let beaconManager = ESTBeaconManager()
     
-    let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "70A27C24-0DD0-4C4F-99B2-3F642A998F27")!, identifier: "test")
+    let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "AD54EAF7-D4D4-4598-A635-BE547BB98C63")!, major: 1866, identifier: "test")
     
     var beaconInfo: [String: BeaconInfo] = Dictionary()
     
@@ -30,9 +27,8 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Ask user to authorize location services when the app is in use
         self.beaconManager.requestWhenInUseAuthorization()
         
-        self.preferredStatusBarStyle()
-        
         // Set navigation bar style
+        self.preferredStatusBarStyle()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green: 39.0/255.0, blue: 118.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -43,14 +39,9 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Retrieve beacon attributes
         self.beaconInfo = Dictionary()
-        
-        getBeaconInfo() { (dataHasBeenLoaded) -> Void in
-            if dataHasBeenLoaded {
-                // print("Stopping activity indicator")
-                // self.activityIndicator.stopAnimating()
-            }
-        }
+        getBeaconInfo() { (dataHasBeenLoaded) -> Void in }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -75,14 +66,6 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func showActivityIndicator() {
-        self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 290, y: 290, width: 40, height: 40))
-        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        self.activityIndicator.hidesWhenStopped = true
-        self.view.addSubview(self.activityIndicator)
-        self.activityIndicator.startAnimating()
     }
 
     // Communicates with the server to check for updated beacon info, and download it if found
@@ -113,9 +96,9 @@ class BeaconTableViewController: UIViewController, UITableViewDelegate, UITableV
         self.beaconInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(BeaconInfo.ArchiveURL.path!) as! [String: BeaconInfo]
     }
     
-    // Helper function; looks up a BeaconInfo object using the minor and major values of the given beacon
+    // Helper function; looks up a BeaconInfo object using the minor value of the given beacon
     func getBeaconInfoForBeacon(beacon: CLBeacon) -> BeaconInfo? {
-        let beaconKey = "\(beacon.major):\(beacon.minor)"
+        let beaconKey = "\(beacon.minor)"
         let beaconInfoObj = self.beaconInfo[beaconKey] as BeaconInfo!
         return beaconInfoObj
     }

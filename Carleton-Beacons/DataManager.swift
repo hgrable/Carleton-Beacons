@@ -120,8 +120,6 @@ public class DataManager {
         // Persist dictionary of BeaconInfo objects
         let beaconInfoSaved = NSKeyedArchiver.archiveRootObject(beaconInfo, toFile: BeaconInfo.ArchiveURL.path!)
         print("Beacon info saved!")
-        //print("Beacon info:")
-        //print(beaconInfo)
         
         if !beaconInfoSaved {
             print("Error saving beacon info dictionary")

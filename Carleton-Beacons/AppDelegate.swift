@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     let beaconManager = ESTBeaconManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let beaconRegion1 = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "70A27C24-0DD0-4C4F-99B2-3F642A998F27")!, identifier: "test")
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "AD54EAF7-D4D4-4598-A635-BE547BB98C63")!, major: 1866, identifier: "test")
         
-        ESTConfig.setupAppID("carleton-test-lxi", andAppToken: "7e5d90bb68e9df64bfe83dfc21559ee1")
+        ESTConfig.setupAppID("carleton-college-s-own-bea-lvx", andAppToken: "e790d7adccd3a7d60a2449c4e9d6118f")
 
         // Set the beacon manager's delegate
         self.beaconManager.delegate = self
@@ -25,11 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         self.beaconManager.requestAlwaysAuthorization()
         
         // Start monitoring for beacons in beaconRegion1, even when the app is not running
-        self.beaconManager.startMonitoringForRegion(beaconRegion1)
+        // This will show the app icon on the bottom left corner of the lock screen when in range of a beacon
+        self.beaconManager.startMonitoringForRegion(beaconRegion)
         
         // Request permission to send notifications
-        UIApplication.sharedApplication().registerUserNotificationSettings(
-            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
+//        UIApplication.sharedApplication().registerUserNotificationSettings(
+//            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
         
         // Set global font
         UILabel.appearance().font = UIFont(name: "TrebuchetMS", size: 14)
@@ -39,12 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     }
     
     // Present notification when user enters a region
-    func beaconManager(manager: AnyObject, didDetermineState region: CLBeaconRegion) {
-        let notification = UILocalNotification()
-        notification.alertBody =
-            "You're in range of a beacon!"
-        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-    }
+//    func beaconManager(manager: AnyObject, didDetermineState region: CLBeaconRegion) {
+//        let notification = UILocalNotification()
+//        notification.alertBody =
+//            "You're in range of a beacon!"
+//        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+//    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
